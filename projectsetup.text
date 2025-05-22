@@ -1,0 +1,13 @@
+// install express 
+npm i express
+
+// install sequelize 
+ npm i sequelize 
+
+ // install  PostgreSQL (pg)
+  nmp i pg
+
+  // install dotenv (Enviroment file )
+   npm i dotenv
+
+   //
