@@ -11,10 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 
 // import Routes
 const patientRoutes = require("./routes/patientRoutes");
+const doctorRoutes = require("./routes/doctorRoutes");
 const specializationRoutes = require("./routes/specializationRouter");
 const bedRouter = require("./routes/bedRoutes");
 
 app.use("", patientRoutes);
+app.use("", doctorRoutes);
 app.use("", specializationRoutes);
 app.use("", bedRouter);
 

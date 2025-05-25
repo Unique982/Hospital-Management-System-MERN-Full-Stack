@@ -1,8 +1,12 @@
 const patientModel = (sequelize, DataTypes) => {
   const Patient = sequelize.define("patient", {
-    userName: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "users",
+        key: "id",
+      },
     },
     firstName: {
       type: DataTypes.STRING,
@@ -12,20 +16,25 @@ const patientModel = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    email: {
+    address: {
       type: DataTypes.STRING,
       allowNull: false,
-      uniqe: true,
+    },
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     phoneNumber: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   });
+  Patient.associate = (models) => {
+    Patient.belongsTo(models.User, {
+      foreignKey: "user_id",
+      as: "user",
+    });
+  };
   return Patient;
 };
 module.exports = patientModel;

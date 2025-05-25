@@ -19,12 +19,18 @@ sequelize
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-
+// user table import
+db.users = require("../models/userModel")(sequelize, DataTypes);
+// patient table import
 db.patients = require("../models/patientModel")(sequelize, DataTypes);
+// doctor model import
+db.doctors = require("../models/doctorModel")(sequelize, DataTypes);
+// specialization table import
 db.specializations = require("../models/specializationModel")(
   sequelize,
   DataTypes
 );
+// beds table import
 db.beds = require("../models/bedModel")(sequelize, DataTypes);
 
 // migrate code
