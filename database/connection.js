@@ -25,6 +25,10 @@ db.users = require("../models/userModel")(sequelize, DataTypes);
 db.patients = require("../models/patientModel")(sequelize, DataTypes);
 // doctor model import
 db.doctors = require("../models/doctorModel")(sequelize, DataTypes);
+// nurse table import
+db.nurses = require("../models/nurseModel")(sequelize, DataTypes);
+// Pharamacist model import
+db.pharmacists = require("../models/pharmacistModel")(sequelize, DataTypes);
 // specialization table import
 db.specializations = require("../models/specializationModel")(
   sequelize,

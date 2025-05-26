@@ -125,5 +125,14 @@ exports.deleteDoctor = async (req, res, next) => {
 
 // Single Doctor record
 exports.singleDoctor = async (req, res, next) => {
-  const id = req.params.id;
+  try {
+    const id = req.params.id;
+    const doctor = await doctor.findByPk(id);
+    if (!doctor) {
+      res.json({ message: "doctor id not found" });
+    }
+    res.json({ message: "doctor fetch all successfully", doctor });
+  } catch (err) {
+    res.json({ message: "doctor fetch error" });
+  }
 };

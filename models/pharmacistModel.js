@@ -1,5 +1,5 @@
-const doctorModel = (sequelize, DataTypes) => {
-  const Doctor = sequelize.define("doctor", {
+const pharmacistModel = (sequelize, DataTypes) => {
+  const Pharmacist = sequelize.define("pharmacist", {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -16,23 +16,7 @@ const doctorModel = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    specialization: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "specializations",
-        key: "id",
-      },
-    },
-    gender: {
-      type: DataTypes.ENUM("male", "female", "other"),
-      allowNull: false,
-    },
     address: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    qualification: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -40,13 +24,20 @@ const doctorModel = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    qualification: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    gender: {
+      type: DataTypes.ENUM("male", "female", "other"),
+    },
   });
-  Doctor.associate = (models) => {
-    Doctor.belongsTo(models.User, {
-      foreignKey: "user_id",
+  Pharmacist.associate = (model) => {
+    Pharmacist.belongsTo(model.User, {
+      foreignKey: "users",
       as: "user",
     });
   };
-  return Doctor;
+  return Pharmacist;
 };
-module.exports = doctorModel;
+module.exports = pharmacistModel;
