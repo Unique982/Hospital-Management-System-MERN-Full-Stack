@@ -39,6 +39,7 @@ const doctorModel = (sequelize, DataTypes) => {
     phoneNumber: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
   });
   Doctor.associate = (models) => {

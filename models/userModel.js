@@ -16,7 +16,6 @@ const userModel = (sequelize, DataTypes) => {
         "admin",
         "doctor",
         "nurse",
-        "receptionist",
         "pharmacist",
         "accountant",
         "lab_technician",

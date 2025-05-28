@@ -27,6 +27,7 @@ const patientModel = (sequelize, DataTypes) => {
     phoneNumber: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
   });
   Patient.associate = (models) => {

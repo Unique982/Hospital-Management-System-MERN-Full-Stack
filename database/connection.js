@@ -15,7 +15,7 @@ sequelize
     console.log("Error Aayo!", err);
   });
 
-// object create db
+// object create db for database
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
@@ -31,6 +31,11 @@ db.nurses = require("../models/nurseModel")(sequelize, DataTypes);
 db.pharmacists = require("../models/pharmacistModel")(sequelize, DataTypes);
 // accountant model import
 db.accountants = require("../models/accountantModel")(sequelize, DataTypes);
+// lab_technician model import
+db.lab_technicians = require("../models/lab_TechnicinaModel")(
+  sequelize,
+  DataTypes
+);
 // specialization table import
 db.specializations = require("../models/specializationModel")(
   sequelize,
@@ -38,6 +43,10 @@ db.specializations = require("../models/specializationModel")(
 );
 // beds table import
 db.beds = require("../models/bedModel")(sequelize, DataTypes);
+// allocated bed table import
+db.allocateds = require("../models/bedAllcateModel")(sequelize, DataTypes);
+// bloodDonor table
+db.bloodDonrs = require("../models/bloodDonorModel")(sequelize, DataTypes);
 
 // migrate code
 sequelize.sync({ alter: false }).then(() => {

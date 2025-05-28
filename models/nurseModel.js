@@ -27,6 +27,7 @@ const nurseModel = (sequelize, DataTypes) => {
     phoneNumber: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     address: {
       type: DataTypes.STRING,
