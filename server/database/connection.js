@@ -47,6 +47,8 @@ db.beds = require("../models/bedModel")(sequelize, DataTypes);
 db.allocateds = require("../models/bedAllcateModel")(sequelize, DataTypes);
 // bloodDonor table
 db.bloodDonrs = require("../models/bloodDonorModel")(sequelize, DataTypes);
+// appointment table
+db.appointments = require("../models/appointmentsModel")(sequelize, DataTypes);
 
 // migrate code
 sequelize.sync({ alter: false }).then(() => {
