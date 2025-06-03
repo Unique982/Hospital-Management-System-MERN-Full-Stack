@@ -1,13 +1,20 @@
-// install express 
+// Install Express (Web framework)
 npm i express
 
-// install sequelize 
- npm i sequelize 
+// Install Sequelize (ORM)
+npm i sequelize
 
- // install  PostgreSQL (pg)
-  nmp i pg
+// Install PostgreSQL driver
+npm i pg
 
-  // install dotenv (Enviroment file )
-   npm i dotenv
+// Install dotenv (for environment variables)
+npm i dotenv
 
-   //
+// Install bcryptjs (for password hashing)
+npm i bcryptjs
+
+// Install cors (for cross-origin requests)
+npm i cors
+
+// Install jsonwebtoken (for token-based authentication)
+npm i jsonwebtoken

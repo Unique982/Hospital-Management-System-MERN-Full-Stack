@@ -1,4 +1,5 @@
 const { accountants, users } = require("../database/connection");
+const bcrypt = require("bcryptjs");
 exports.getAccountant = async (req, res, next) => {
   try {
     const accountantDatas = await accountants.findAll(); // all data stored accountantDatas
@@ -21,11 +22,24 @@ exports.adAccountant = async (req, res, next) => {
       phoneNumber,
       address,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !gender ||
+      !qualification ||
+      !phoneNumber ||
+      !address
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
 
     const newUser = await users.create({
       userName,
       email,
-      password,
+      password: bcrypt.hashSync(password, 10),
       role: "accountant",
     });
     await accountants.create({
@@ -61,6 +75,18 @@ exports.updateAccountant = async (req, res, next) => {
       phoneNumber,
       address,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !firstName ||
+      !lastName ||
+      !gender ||
+      !qualification ||
+      !phoneNumber ||
+      !address
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
     // update for accountant table
     await accountants.update(
       {

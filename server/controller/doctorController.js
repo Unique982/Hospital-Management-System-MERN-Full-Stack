@@ -1,4 +1,5 @@
 const { doctors, specializations, users } = require("../database/connection");
+const bcrypt = require("bcryptjs");
 
 exports.getDoctor = async (req, res, next) => {
   const doctorDatas = await doctors.findAll();
@@ -18,13 +19,27 @@ exports.addDoctor = async (req, res, next) => {
       qualification,
       phoneNumber,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !specialization ||
+      !gender ||
+      !address ||
+      !qualification ||
+      !phoneNumber
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
 
     // user table insert 1st
     const newUser = await users.create({
       userName,
       email,
       role: "doctor",
-      password,
+      password: bcrypt.hashSync(password, 12),
     });
     await doctors.create({
       user_id: newUser.id,
@@ -62,6 +77,20 @@ exports.updateDoctor = async (req, res, next) => {
       qualification,
       phoneNumber,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !firstName ||
+      !lastName ||
+      !specialization ||
+      !gender ||
+      !address ||
+      !qualification ||
+      !phoneNumber
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
+
     // doctor table ma update
     await doctors.update(
       {

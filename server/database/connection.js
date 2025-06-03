@@ -17,6 +17,7 @@ sequelize
 
 // object create db for database
 const db = {};
+
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 // user table import
@@ -49,10 +50,14 @@ db.allocateds = require("../models/bedAllcateModel")(sequelize, DataTypes);
 db.bloodDonrs = require("../models/bloodDonorModel")(sequelize, DataTypes);
 // appointment table
 db.appointments = require("../models/appointmentsModel")(sequelize, DataTypes);
+// report table
+db.reports = require("../models/reportModel")(sequelize, DataTypes);
 
 // migrate code
 sequelize.sync({ alter: false }).then(() => {
   console.log("Migrate Successfully");
+  const adminSeeder = require("../seeders/admin.seeder");
+  adminSeeder(db);
 });
 
 module.exports = db;

@@ -1,5 +1,6 @@
 // Patient Controller code here
 const { users, patients } = require("../database/connection");
+const bcrypt = require("bcryptjs");
 
 exports.getPatientData = async (req, res, next) => {
   const datas = await patients.findAll();
@@ -19,13 +20,25 @@ exports.addPatientData = async (req, res, next) => {
       age,
       phoneNumber,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !address ||
+      !age ||
+      !phoneNumber
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
 
     // user table insert
     const newUser = await users.create({
       userName,
       email,
       role: "patient",
-      password,
+      password: bcrypt.hashSync(password, 12),
     });
     // patient table insert
     await patients.create({
@@ -49,6 +62,18 @@ exports.updatePatient = async (req, res, next) => {
     const id = req.params.id;
     const { userName, email, firstName, lastName, address, age, phoneNumber } =
       req.body;
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !age ||
+      !phoneNumber ||
+      !address
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
     const patient = await patients.findByPk(id);
     if (!patient) {
       res.json({ message: "Patient id not found" });

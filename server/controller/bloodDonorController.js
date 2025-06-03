@@ -25,6 +25,18 @@ exports.addBloodDonor = async (req, res, next) => {
       lastDonated,
       isAvailable,
     } = req.body;
+    if (
+      !name ||
+      !email ||
+      !phone ||
+      !age ||
+      !gender ||
+      !bloodGroup ||
+      !lastDonated ||
+      !isAvailable
+    ) {
+      res.json({ message: "all filed is required" });
+    }
     await bloodDonrs.create({
       name,
       email,
@@ -56,6 +68,18 @@ exports.updateBloodDonor = async (req, res, next) => {
       lastDonated,
       isAvailable,
     } = req.body;
+    if (
+      !name ||
+      !email ||
+      !phone ||
+      !age ||
+      !gender ||
+      !bloodGroup ||
+      !lastDonated ||
+      !isAvailable
+    ) {
+      res.json({ message: "all filed is required" });
+    }
     await bloodDonrs.update(
       {
         name,

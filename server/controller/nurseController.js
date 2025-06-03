@@ -1,4 +1,5 @@
 const { nurses, users } = require("../database/connection");
+const bcrypt = require("bcryptjs");
 exports.getNurse = async (req, res, next) => {
   try {
     const nurseDatas = await nurses.findAll();
@@ -22,10 +23,23 @@ exports.addNurse = async (req, res, next) => {
       phoneNumber,
       address,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !gender ||
+      !qualification ||
+      !phoneNumber ||
+      !address
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
     const newUser = await users.create({
       userName,
       email,
-      password,
+      password: bcrypt.hashSync(password, 12),
       role: "nurse",
     });
     await nurses.create({
@@ -62,7 +76,19 @@ exports.updateNurse = async (req, res, next) => {
       phoneNumber,
       address,
     } = req.body;
-
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !gender ||
+      !qualification ||
+      !phoneNumber ||
+      !address
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
     // update user table username and email
     await nurses.update(
       { firstName, lastName, gender, qualification, phoneNumber, address },

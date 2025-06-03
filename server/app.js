@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // import Routes
+const authRoutes = require("./routes/authRoutes");
 const patientRoutes = require("./routes/patientRoutes");
 const doctorRoutes = require("./routes/doctorRoutes");
 const nurseRoutes = require("./routes/nurseRoutes");
@@ -21,7 +22,9 @@ const bedRouter = require("./routes/bedRoutes");
 const bedAllocatedRouter = require("./routes/bedAllocatedRoutes");
 const bloodDonorRouter = require("./routes/bloodDonorRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
+app.use("", authRoutes);
 app.use("/api", patientRoutes);
 app.use("/api", doctorRoutes);
 app.use("/api", nurseRoutes);
@@ -33,6 +36,7 @@ app.use("/api", bedRouter);
 app.use("/api", bedAllocatedRouter);
 app.use("/api", bloodDonorRouter);
 app.use("/api", appointmentRoutes);
+app.use("/api", reportRoutes);
 
 // create server
 app.listen(5000, () => {

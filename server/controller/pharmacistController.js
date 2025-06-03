@@ -1,4 +1,5 @@
 const { pharmacists, users } = require("../database/connection");
+const bcrypt = require("bcryptjs");
 exports.getPharmacist = async (req, res, next) => {
   try {
     const pharamacistsDatas = await pharmacists.findAll();
@@ -25,11 +26,24 @@ exports.addPharamacists = async (req, res, next) => {
       gender,
       qualification,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !address ||
+      !phoneNumber ||
+      !gender ||
+      !qualification
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
     // user table  insert
     const newUser = await users.create({
       userName,
       email,
-      password,
+      password: bcrypt.hashSync(password, 12),
       role: "pharmacist",
     });
     // pharamacists table insert
@@ -67,6 +81,20 @@ exports.updatePharmacists = async (req, res, next) => {
       gender,
       qualification,
     } = req.body;
+    if (
+      !userName ||
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !address ||
+      !phoneNumber ||
+      !gender ||
+      !qualification
+    ) {
+      return res.json({ message: "All filed is require" });
+    }
+
     // pharmacists table update
     await pharmacists.update(
       {
