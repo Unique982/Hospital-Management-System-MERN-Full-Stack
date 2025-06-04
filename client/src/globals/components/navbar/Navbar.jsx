@@ -7,6 +7,8 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
+import { Link } from "react-router-dom";
+import Login from "../../../pages/auth/login/Login";
 import logo from "../../../assets/favicon/web-app-manifest-512x512.png";
 import profile from "../../../assets/images/profile.jpg";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -84,7 +86,11 @@ const Navbar = () => {
                 <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Open user menu</span>
-                  <img alt="" src={profile} className="size-8 rounded-full" />
+                  <img
+                    alt="profile"
+                    src={profile}
+                    className="size-8 rounded-full"
+                  />
                 </MenuButton>
               </div>
               <MenuItems
@@ -108,12 +114,12 @@ const Navbar = () => {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    href="#"
+                  <Link
+                    to="/login"
                     className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                   >
                     Sign out
-                  </a>
+                  </Link>
                 </MenuItem>
               </MenuItems>
             </Menu>

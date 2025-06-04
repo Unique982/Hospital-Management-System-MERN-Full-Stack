@@ -3,9 +3,16 @@ import img from "../../../assets/images/team-doctors-standing-row_107420-84772.j
 const About = () => {
   return (
     <>
-      <div className="py-16 bg-white">
-        <div className="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
-          <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
+      <div className="py-8 bg-white">
+        <div className="container m-auto px-4 text-gray-600 md:px-12 xl:px-4">
+          <div className="flex flex-col items-center gap-5 mb-2 md:mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-indigo-700 to-orange-400 bg-clip-text text-transparent">
+              About Section
+            </h2>
+            <span className="w-50 h-[4px] bg-rose-500 rounded"></span>
+            <span className="w-20 h-[4px] bg-rose-500 rounded"></span>
+          </div>
+          <div className="space-y-6 mb-40 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
             <div className="md:5/12 lg:w-5/12">
               <img src={img} alt="about_img" loading="lazy" width height />
             </div>
