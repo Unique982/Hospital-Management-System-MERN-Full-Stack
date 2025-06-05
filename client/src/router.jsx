@@ -6,6 +6,12 @@ import ForgotPassword from "./pages/auth/forgetpasssword/ForgetPassword";
 import VerifyOtp from "./pages/auth/verifyOtp/VerifyOtp";
 import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
 import Register from "./pages/auth/register/Register";
+import Services from "./pages/home/componenets/Services";
+import Teams from "./pages/home/componenets/Teams";
+import Blog from "./pages/home/componenets/Blog";
+import Contact from "./pages/home/componenets/Contact";
+import Gallery from "./pages/home/componenets/Gallery";
+import SinglePage from "./pages/home/componenets/Single";
 
 const router = createBrowserRouter([
   {
@@ -13,24 +19,8 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/service",
-    element: "<h1> this is service page</h1>",
-  },
-  {
-    path: "/team",
-    element: "<h1>This is team page<h1>",
-  },
-  {
-    path: "/blog",
-    element: "<h1>This is blog page</h1>",
-  },
-  {
-    path: "/contact",
-    element: "<h1>this is contact page</h1>",
+    path: "/single-page",
+    element: <SinglePage />,
   },
   {
     path: "/login",
