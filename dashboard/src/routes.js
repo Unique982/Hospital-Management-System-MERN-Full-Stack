@@ -18,83 +18,93 @@ import {
   MdGroups,
   MdDescription,
   MdSettings,
-  MdLock,
 } from "react-icons/md";
-import { layout } from "@chakra-ui/system";
+
 import AddBlog from "views/admin/blog/AddBlog";
 import OurTeams from "views/admin/ourTeams";
 import AddOurTeams from "views/admin/ourTeams/AddOurTeams";
+import Services from "views/admin/services";
+import AddServices from "views/admin/services/AddServices";
+import AboutUs from "views/admin/AboutUs";
+import ListAllDoctors from "views/admin/Doctors";
+import AddDoctors from "views/admin/Doctors/AddDoctor";
+import ListPatient from "views/admin/patient";
+import { layout } from "@chakra-ui/system";
+import AddPatient from "views/admin/patient/AddPatient";
 
 const routes = [
   {
     name: "Dashboard",
     layout: "/admin",
     path: "default",
-    icon: <MdHome className="h-6 w-6" />,
+    icon: <MdHome className="h-6 w-7" />,
     component: <MainDashboard />,
   },
   {
     name: "Manage Staff",
     layout: "/admin",
     path: "staff",
-    icon: <MdGroup className="h-6 w-6" />,
-    component: <MainDashboard />,
+    icon: <MdGroup className="h-6 w-7" />,
     children: [
       {
         name: "Manage Doctor",
         layout: "/admin",
-        path: "staff",
-        icon: <MdGroup className="h-6 w-6" />,
+        path: "staff/doctors",
+        component: <ListAllDoctors />,
+        icon: <MdGroup className="h-6 w-7" />,
       },
+
       {
         name: "Manage Nurse",
         layout: "/admin",
         path: "staff",
-        icon: <MdGroup className="h-6 w-6" />,
+        icon: <MdGroup className="h-6 w-7" />,
       },
       {
         name: "Manage Accountant",
         layout: "/admin",
         path: "staff",
-        icon: <MdGroup className="h-6 w-6" />,
+        icon: <MdGroup className="h-6 w-7" />,
       },
       {
         name: "Manage Lab",
         layout: "/admin",
         path: "staff",
-        icon: <MdPerson className="h-6 w-6" />,
+        icon: <MdPerson className="h-6 w-7" />,
       },
     ],
   },
+
   {
     name: "Manage Pateint",
     layout: "/admin",
     path: "patient",
+    component: <ListPatient />,
     icon: <MdPerson className="h-6 w-6" />,
   },
   {
     name: "Manage Bed",
     layout: "/admin",
-    path: "patient",
-    icon: <MdBed className="h-6 w-6" />,
+    path: "bed",
+    icon: <MdBed className="h-6 w-7" />,
     children: [
       {
         name: "manage bed",
         path: "patient",
-        icon: <MdBed className="h-6 w-6" />,
+        icon: <MdBed className="h-6 w-7" />,
       },
       {
         name: "Manage Bed Allocated",
         path: "patient",
-        icon: <MdBed className="h-6 w-6" />,
+        icon: <MdBed className="h-6 w-7" />,
       },
     ],
   },
   {
     name: "Manage Invoice",
     layout: "/admin",
-    path: "patient",
-    icon: <MdInventory className="h-6 w-6" />,
+    path: "invoice",
+    icon: <MdInventory className="h-6 w-7" />,
   },
   {
     type: "divider",
@@ -107,12 +117,14 @@ const routes = [
     name: "About",
     layout: "/admin",
     path: "dashboard",
+    component: <AboutUs />,
     icon: <MdInfo className="h-6 w-7" />,
   },
   {
     name: "Services",
     layout: "/admin",
-    path: "dashboard",
+    path: "services",
+    component: <Services />,
     icon: <MdDesignServices className="h-6 w-7" />,
   },
   {
@@ -149,6 +161,12 @@ const routes = [
     path: "our/teams",
     component: <AddOurTeams />,
   },
+  {
+    layout: "/admin",
+    path: "services/add",
+    component: <AddServices />,
+  },
+
   // {
   //   name: "Data Tables",
   //   layout: "/admin",

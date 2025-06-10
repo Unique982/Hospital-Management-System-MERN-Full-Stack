@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AddBlog = () => {
   return (
     <>
@@ -108,7 +110,7 @@ const AddBlog = () => {
             </div>
           </form>
         </div>
-        <div className="rounded-b border-t border-gray-200 p-6 dark:border-gray-700">
+        <div className="space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-700">
           <button
             type="submit"
             className="rounded-lg bg-green-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700
@@ -116,6 +118,16 @@ const AddBlog = () => {
           >
             Add Blog
           </button>
+
+          <Link to="/admin/blog">
+            <button
+              type="cancel"
+              className="rounded-lg bg-red-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-700
+                       focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
+            >
+              Cancel
+            </button>
+          </Link>
         </div>
       </div>
     </>
