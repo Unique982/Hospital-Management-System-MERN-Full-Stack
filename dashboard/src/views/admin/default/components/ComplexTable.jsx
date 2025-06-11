@@ -1,7 +1,7 @@
 import React from "react";
-import CardMenu from "components/card/CardMenu";
+
 import Card from "components/card";
-import Progress from "components/progress";
+
 import { MdCancel, MdCheckCircle, MdOutlineError } from "react-icons/md";
 
 import {
@@ -31,26 +31,18 @@ export default function ComplexTable(props) {
         </p>
       ),
     }),
-    columnHelper.accessor("status", {
-      id: "status",
+
+    columnHelper.accessor("amount", {
+      id: "amount",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          STATUS
+          AMOUNT
         </p>
       ),
       cell: (info) => (
-        <div className="flex items-center">
-          {info.getValue() === "Approved" ? (
-            <MdCheckCircle className="text-green-500 me-1 dark:text-green-300" />
-          ) : info.getValue() === "Disable" ? (
-            <MdCancel className="text-red-500 me-1 dark:text-red-300" />
-          ) : info.getValue() === "Error" ? (
-            <MdOutlineError className="text-amber-500 me-1 dark:text-amber-300" />
-          ) : null}
-          <p className="text-sm font-bold text-navy-700 dark:text-white">
-            {info.getValue()}
-          </p>
-        </div>
+        <p className="text-sm font-bold text-navy-700 dark:text-white">
+          {info.getValue()}
+        </p>
       ),
     }),
     columnHelper.accessor("date", {
@@ -64,16 +56,24 @@ export default function ComplexTable(props) {
         </p>
       ),
     }),
-    columnHelper.accessor("progress", {
-      id: "progress",
+
+    columnHelper.accessor("status", {
+      id: "status",
       header: () => (
         <p className="text-sm font-bold text-gray-600 dark:text-white">
-          PROGRESS
+          STATUS
         </p>
       ),
       cell: (info) => (
         <div className="flex items-center">
-          <Progress width="w-[108px]" value={info.getValue()} />
+          {info.getValue() === "Paid" ? (
+            <MdCheckCircle className="me-1 text-green-500 dark:text-green-300" />
+          ) : info.getValue() === "UnPaid" ? (
+            <MdCancel className="me-1 text-red-500 dark:text-red-300" />
+          ) : null}
+          <p className="text-sm font-bold text-navy-700 dark:text-white">
+            {info.getValue()}
+          </p>
         </div>
       ),
     }),
@@ -94,12 +94,10 @@ export default function ComplexTable(props) {
     <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>
       <div className="relative flex items-center justify-between pt-4">
         <div className="text-xl font-bold text-navy-700 dark:text-white">
-          Complex Table
+          Recent Invoice
         </div>
-        <CardMenu />
       </div>
-
-      <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">
+      <div className="mt-5 overflow-x-scroll xl:overflow-x-hidden">
         <table className="w-full">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -110,7 +108,7 @@ export default function ComplexTable(props) {
                       key={header.id}
                       colSpan={header.colSpan}
                       onClick={header.column.getToggleSortingHandler()}
-                      className="cursor-pointer border-b-[1px] border-gray-200 pt-4 pb-2 pr-4 text-start"
+                      className="cursor-pointer border-b-[1px] border-gray-200 pb-2 pr-4 pt-4 text-start"
                     >
                       <div className="items-center justify-between text-xs text-gray-200">
                         {flexRender(

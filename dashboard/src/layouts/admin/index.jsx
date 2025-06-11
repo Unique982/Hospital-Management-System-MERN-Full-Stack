@@ -16,57 +16,83 @@ export default function Admin(props) {
       window.innerWidth < 1200 ? setOpen(false) : setOpen(true)
     );
   }, []);
+
   React.useEffect(() => {
     getActiveRoute(routes);
   }, [location.pathname]);
 
   const getActiveRoute = (routes) => {
-    let activeRoute = "Main Dashboard";
     for (let i = 0; i < routes.length; i++) {
+      const route = routes[i];
+      // Check main route
       if (
-        window.location.href.indexOf(
-          routes[i].layout + "/" + routes[i].path
-        ) !== -1
+        window.location.href.indexOf(route.layout + "/" + route.path) !== -1
       ) {
-        setCurrentRoute(routes[i].name);
+        setCurrentRoute(route.name);
+        return;
+      }
+      if (route.children) {
+        for (let j = 0; j < route.children.length; j++) {
+          const child = route.children[j];
+          if (
+            window.location.href.indexOf(child.layout + "/" + child.path) !== -1
+          ) {
+            setCurrentRoute(child.name);
+            return;
+          }
+        }
       }
     }
-    return activeRoute;
+    setCurrentRoute("Dashboard");
   };
+
   const getActiveNavbar = (routes) => {
-    let activeNavbar = false;
     for (let i = 0; i < routes.length; i++) {
       if (
         window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
       ) {
-        return routes[i].secondary;
+        return routes[i].secondary || false;
       }
     }
-    return activeNavbar;
+    return false;
   };
+
   const getRoutes = (routes) => {
-    return routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
-        return (
-          <Route path={`/${prop.path}`} element={prop.component} key={key} />
-        );
-      } else {
-        return null;
+    return routes.flatMap((route, index) => {
+      if (route.layout === "/admin") {
+        const routeElement = route.component ? (
+          <Route
+            path={`/${route.path}`}
+            element={route.component}
+            key={`route-${index}`}
+          />
+        ) : null;
+
+        const childrenRoutes = route.children
+          ? route.children
+              .filter((child) => child.component)
+              .map((child, idx) => (
+                <Route
+                  path={`/${child.path}`}
+                  element={child.component}
+                  key={`child-${index}-${idx}`}
+                />
+              ))
+          : [];
+
+        return [routeElement, ...childrenRoutes].filter(Boolean);
       }
+      return [];
     });
   };
 
   document.documentElement.dir = "ltr";
+
   return (
     <div className="flex h-full w-full">
       <Sidebar open={open} onClose={() => setOpen(false)} />
-      {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
-        {/* Main Content */}
-        <main
-          className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]`}
-        >
-          {/* Routes */}
+        <main className="mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]">
           <div className="h-full">
             <Navbar
               onOpenSidenav={() => setOpen(true)}
@@ -75,7 +101,7 @@ export default function Admin(props) {
               secondary={getActiveNavbar(routes)}
               {...rest}
             />
-            <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">
+            <div className="mx-auto mb-auto h-full min-h-[84vh] p-2 pt-5 md:pr-2">
               <Routes>
                 {getRoutes(routes)}
 

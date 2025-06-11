@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
-
-const ListAllDoctors = () => {
+import {
+  MdAdd,
+  MdDeleteForever,
+  MdEditNote,
+  MdVisibility,
+} from "react-icons/md";
+const ListBloodDonor = () => {
   return (
     <>
       <div className=" relative mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
@@ -11,19 +16,20 @@ const ListAllDoctors = () => {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
-                    Our Services
+                    Blood Donor Manage
                   </h2>
                   <p className="mt-1 text-gray-500 dark:text-gray-300">
-                    All Services
+                    All Blood Donor Manage System
                   </p>
                 </div>
 
-                {/* Add New Service Button */}
+                {/* Add New Blood Donotr Button */}
                 <Link
-                  to="/admin/services/add"
+                  to="/admin/blooddonor/add"
                   className="mt-4 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-600 md:mt-0"
                 >
-                  + Add New Services
+                  <MdAdd className="h-6 w-5" />
+                  Add New BloodDonor
                 </Link>
               </div>
               {/* Search and Filter */}
@@ -67,20 +73,31 @@ const ListAllDoctors = () => {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-300"
                     >
-                      Title
+                      Name
                     </th>
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-300"
                     >
-                      Description
+                      Email
                     </th>
-
                     <th
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-300"
                     >
-                      Status
+                      Phone Number
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-300"
+                    >
+                      Gender
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-300"
+                    >
+                      Blood Group
                     </th>
                     <th
                       scope="col"
@@ -102,34 +119,51 @@ const ListAllDoctors = () => {
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="text-sm text-gray-900 dark:text-gray-100">
-                        Patient Management System
+                        New Blood
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="text-sm text-gray-900 dark:text-gray-100">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aspernatur, porro!
+                        patient@gmail.com
                       </div>
                     </td>
 
                     <td className="whitespace-nowrap px-6 py-4">
-                      <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800 dark:bg-green-800 dark:text-green-100">
-                        Active
-                      </span>
+                      <div className="text-sm text-gray-900 dark:text-gray-100">
+                        98********
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm text-gray-900 dark:text-gray-100">
+                        Male
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm text-gray-900 dark:text-gray-100">
+                        B+
+                      </div>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                      <Link
-                        to=""
-                        className="mr-3 text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-200"
-                      >
-                        Edit
-                      </Link>
-                      <Link
-                        to=""
-                        className="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-200"
-                      >
-                        Delete
-                      </Link>
+                      <div className=" align-items-center flex justify-end space-x-3">
+                        <Link
+                          to=""
+                          className="inline-flex items-center rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700"
+                        >
+                          <MdVisibility className="mr-1 h-6 w-5" />
+                        </Link>
+                        <Link
+                          to=""
+                          className="inline-flex items-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-700"
+                        >
+                          <MdEditNote className="mr-1 h-6 w-5" />
+                        </Link>
+                        <Link
+                          to=""
+                          className="inline-flex items-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
+                        >
+                          <MdDeleteForever className="mr-1 h-6 w-5" />
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -232,4 +266,4 @@ const ListAllDoctors = () => {
   );
 };
 
-export default ListAllDoctors;
+export default ListBloodDonor;

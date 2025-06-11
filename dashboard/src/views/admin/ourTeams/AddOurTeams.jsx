@@ -107,27 +107,28 @@ const AddOurTeams = () => {
                            dark:file:bg-green-500 dark:file:hover:bg-green-600"
                 />
               </div>
+
+              <div className="space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-700">
+                <button
+                  type="submit"
+                  className="rounded-lg bg-green-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700
+                     focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
+                >
+                  Save Teams
+                </button>
+
+                <Link to="/admin/our-teams">
+                  <button
+                    type="cancel"
+                    className="rounded-lg bg-red-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-700
+                       focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
+                  >
+                    Cancel
+                  </button>
+                </Link>
+              </div>
             </div>
           </form>
-        </div>
-        <div className="space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-700">
-          <button
-            type="submit"
-            className="rounded-lg bg-green-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700
-                     focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
-          >
-            Save Teams
-          </button>
-
-          <Link to="/admin/our-teams">
-            <button
-              type="cancel"
-              className="rounded-lg bg-red-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-700
-                       focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
-            >
-              Cancel
-            </button>
-          </Link>
         </div>
       </div>
     </>

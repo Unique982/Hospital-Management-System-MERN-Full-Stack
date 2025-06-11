@@ -1,8 +1,7 @@
-import React, { Children } from "react";
+import React from "react";
 
 // Admin Imports
-import MainDashboard from "views/admin/default";
-import Staff from "views/admin/staff";
+
 import Setting from "views/admin/setting";
 import Blog from "views/admin/blog";
 
@@ -18,6 +17,9 @@ import {
   MdGroups,
   MdDescription,
   MdSettings,
+  MdBloodtype,
+  MdBookOnline,
+  MdReport,
 } from "react-icons/md";
 
 import AddBlog from "views/admin/blog/AddBlog";
@@ -25,12 +27,15 @@ import OurTeams from "views/admin/ourTeams";
 import AddOurTeams from "views/admin/ourTeams/AddOurTeams";
 import Services from "views/admin/services";
 import AddServices from "views/admin/services/AddServices";
-import AboutUs from "views/admin/AboutUs";
-import ListAllDoctors from "views/admin/Doctors";
-import AddDoctors from "views/admin/Doctors/AddDoctor";
+import AboutUs from "views/admin/aboutUs";
 import ListPatient from "views/admin/patient";
-import { layout } from "@chakra-ui/system";
 import AddPatient from "views/admin/patient/AddPatient";
+import Dashboard from "views/admin/default";
+import ListBloodDonor from "views/admin/bloodDonor";
+import AddBooldDonor from "views/admin/bloodDonor/AddBloodDonor";
+import AllReportList from "views/admin/report";
+import AddReport from "views/admin/report/AddReport";
+import ListAllDoctors from "views/admin/staff/doctors";
 
 const routes = [
   {
@@ -38,8 +43,9 @@ const routes = [
     layout: "/admin",
     path: "default",
     icon: <MdHome className="h-6 w-7" />,
-    component: <MainDashboard />,
+    component: <Dashboard />,
   },
+  // Staff Section doctor nurse ....
   {
     name: "Manage Staff",
     layout: "/admin",
@@ -57,23 +63,24 @@ const routes = [
       {
         name: "Manage Nurse",
         layout: "/admin",
-        path: "staff",
+        path: "nurse",
         icon: <MdGroup className="h-6 w-7" />,
       },
       {
         name: "Manage Accountant",
         layout: "/admin",
-        path: "staff",
+        path: "accountant",
         icon: <MdGroup className="h-6 w-7" />,
       },
       {
         name: "Manage Lab",
         layout: "/admin",
-        path: "staff",
+        path: "lab",
         icon: <MdPerson className="h-6 w-7" />,
       },
     ],
   },
+  // Patient menu bar
 
   {
     name: "Manage Pateint",
@@ -82,6 +89,7 @@ const routes = [
     component: <ListPatient />,
     icon: <MdPerson className="h-6 w-6" />,
   },
+  // Manage bed
   {
     name: "Manage Bed",
     layout: "/admin",
@@ -100,6 +108,31 @@ const routes = [
       },
     ],
   },
+  // manage Appointment
+  {
+    name: "Viwe Appointment",
+    path: "appointment",
+    layout: "/admin",
+    icon: <MdBookOnline className="h-6 w-7" />,
+  },
+  // Manage Blood donnor
+  {
+    name: "Manage Blood",
+    path: "blood",
+    layout: "/admin",
+    component: <ListBloodDonor />,
+    icon: <MdBloodtype className="h-6 w-7" />,
+  },
+  // manage report
+  {
+    name: "Manage Report ",
+    path: "report",
+    layout: "/admin",
+    component: <AllReportList />,
+    icon: <MdReport className="h-6 w-7" />,
+  },
+
+  // Manage Invoice
   {
     name: "Manage Invoice",
     layout: "/admin",
@@ -165,6 +198,23 @@ const routes = [
     layout: "/admin",
     path: "services/add",
     component: <AddServices />,
+  },
+  {
+    layout: "/admin",
+    path: "patient/add",
+    component: <AddPatient />,
+  },
+  // add blood bonor
+  {
+    layout: "/admin",
+    path: "blooddonor/add",
+    component: <AddBooldDonor />,
+  },
+  // Report add
+  {
+    layout: "/admin",
+    path: "report/add",
+    component: <AddReport />,
   },
 
   // {
