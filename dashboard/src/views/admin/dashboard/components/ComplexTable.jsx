@@ -2,7 +2,7 @@ import React from "react";
 
 import Card from "components/card";
 
-import { MdCancel, MdCheckCircle, MdOutlineError } from "react-icons/md";
+import { MdCancel, MdCheckCircle } from "react-icons/md";
 
 import {
   createColumnHelper,

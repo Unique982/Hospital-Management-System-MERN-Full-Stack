@@ -1,19 +1,20 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-const AddDoctors = () => {
+const AddAccountant = () => {
   return (
     <>
       <div className="relative  mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
         <div className="flex items-start justify-between rounded-t border-b border-gray-200 p-5 dark:border-gray-700">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-            Add New Doctors
+            Add New Accountant
           </h3>
         </div>
 
         <div className="space-y-6 p-6">
           <form action="#">
             <div className="grid grid-cols-1 gap-6">
-              {/*User Name Doctors */}
+              {/*User Name Accountant */}
               <div>
                 <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">
                   User name
@@ -21,9 +22,7 @@ const AddDoctors = () => {
                 <input
                   type="text"
                   name="userName"
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter user name..."
                   required
                 />
@@ -37,8 +36,8 @@ const AddDoctors = () => {
                   type="text"
                   name="firstName"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                                       focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
+                                       dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter firstname..."
                   required
                 />
@@ -53,8 +52,8 @@ const AddDoctors = () => {
                   type="text"
                   name="lastName"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                                       focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
+                                       dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter lastname..."
                   required
                 />
@@ -68,8 +67,8 @@ const AddDoctors = () => {
                   type="text"
                   name="email"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                                       focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
+                                       dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter email"
                   required
                 />
@@ -83,8 +82,8 @@ const AddDoctors = () => {
                   type="text"
                   name="phone"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                                       focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
+                                       dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter phone Number"
                   required
                 />
@@ -98,31 +97,13 @@ const AddDoctors = () => {
                   type="text"
                   name="address"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                                       focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
+                                       dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter address"
                   required
                 />
               </div>
-              {/* Specialization */}
-              <div>
-                <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">
-                  Specialization
-                </label>
-                <select
-                  name="specialization"
-                  id="specialization"
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
-               focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-white 
-               dark:focus:border-cyan-500 dark:focus:ring-cyan-500"
-                >
-                  <option selected disabled>
-                    Choose Specialization
-                  </option>
-                  <option value="">Testing</option>
-                  <option value="">Testing 2</option>
-                </select>
-              </div>
+
               {/* qualification  */}
               <div>
                 <label className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -132,8 +113,8 @@ const AddDoctors = () => {
                   type="text"
                   name="qualification"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                                       focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
+                                       dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter qualification"
                   required
                 />
@@ -147,8 +128,8 @@ const AddDoctors = () => {
                   name="gender"
                   id="gender"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
-               focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-white 
-               dark:focus:border-cyan-500 dark:focus:ring-cyan-500"
+                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-white 
+                   dark:focus:border-cyan-500 dark:focus:ring-cyan-500"
                 >
                   <option selected disabled>
                     Select Gender
@@ -166,9 +147,7 @@ const AddDoctors = () => {
                 <input
                   type="password"
                   name="password"
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
-                                   focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
-                                   dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
+                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter password"
                   required
                 />
@@ -176,17 +155,15 @@ const AddDoctors = () => {
               <div className="space-x-2 rounded-b border-t border-gray-200 p-6 dark:border-gray-700">
                 <button
                   type="submit"
-                  className="rounded-lg bg-green-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700
-                                         focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
+                  className="rounded-lg bg-green-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700 focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
                 >
-                  Add Doctors
+                  Add Accountant
                 </button>
 
-                <Link to="/admin/staff/doctors">
+                <Link to="/admin/staff/accountant">
                   <button
                     type="cancel"
-                    className="rounded-lg bg-red-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-700
-                                           focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
+                    className="rounded-lg bg-red-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-red-700 focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800"
                   >
                     Cancel
                   </button>
@@ -199,4 +176,5 @@ const AddDoctors = () => {
     </>
   );
 };
-export default AddDoctors;
+
+export default AddAccountant;

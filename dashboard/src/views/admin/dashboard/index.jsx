@@ -1,10 +1,7 @@
 import MiniCalendar from "components/calendar/MiniCalendar";
-import { IoMdHome } from "react-icons/io";
-import { IoDocuments } from "react-icons/io5";
+
 import {
-  MdBarChart,
   MdBookOnline,
-  MdDashboard,
   MdDocumentScanner,
   MdGroup,
   MdLocalHospital,
@@ -16,8 +13,8 @@ import {
 
 import Widget from "components/widget/Widget";
 
-import ComplexTable from "views/admin/default/components/ComplexTable";
-import DailyTraffic from "views/admin/default/components/DailyTraffic";
+import ComplexTable from "views/admin/dashboard/components/ComplexTable";
+import DailyTraffic from "views/admin/dashboard/components/DailyTraffic";
 
 import tableDataComplex from "./variables/tableDataComplex.json";
 
@@ -26,7 +23,7 @@ const Dashboard = () => {
     <div>
       {/* Card widget */}
 
-      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3 3xl:grid-cols-5">
+      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 3xl:grid-cols-5">
         <Widget
           icon={<MdPerson className="h-7 w-7" />}
           title={"Total Patient"}

@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
-import {
-  MdAdd,
-  MdDeleteForever,
-  MdEditNote,
-  MdVisibility,
-} from "react-icons/md";
-const ListAllDoctors = () => {
+import { MdDeleteForever, MdEditNote, MdVisibility } from "react-icons/md";
+const ListAppointment = () => {
   return (
     <>
       <div className=" relative mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
@@ -16,27 +11,16 @@ const ListAllDoctors = () => {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
-                    Doctors List
+                    Manage Appointment
                   </h2>
-                  <p className="mt-1 text-gray-500 dark:text-gray-300">
-                    All Doctors List
-                  </p>
                 </div>
-                {/* Add New Doctors Button */}
-                <Link
-                  to="/admin/staff/doctor/add"
-                  className="mt-4 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-600 md:mt-0"
-                >
-                  <MdAdd className="h-6 w-5" />
-                  Add New Doctors
-                </Link>
               </div>
               {/* Search and Filter */}
               <div className="mt-6 flex flex-col gap-4 sm:flex-row">
                 <div className="relative flex-grow">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg
-                      className="h-5 w-5 text-white dark:text-gray-500"
+                      className="text-black h-5 w-5 dark:text-gray-500"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -64,37 +48,44 @@ const ListAllDoctors = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
                       id
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                    >
+                      Patient Name
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
                       Doctors Name
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Email
+                      Status
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Phone Number
+                      Appointment Date
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Specialization
+                      Appointment Time
                     </th>
+
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-right text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
                       Actions
                     </th>
@@ -117,20 +108,25 @@ const ListAllDoctors = () => {
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="text-sm text-gray-900 dark:text-gray-100">
-                        patient@gmail.com
+                        Testing Doctors
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800 dark:bg-green-800 dark:text-green-100">
+                        Padding
+                      </span>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm text-gray-900 dark:text-gray-100">
+                        2082-02-1
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm text-gray-900 dark:text-gray-100">
+                        10:30Am
                       </div>
                     </td>
 
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm text-gray-900 dark:text-gray-100">
-                        98********
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm text-gray-900 dark:text-gray-100">
-                        haha
-                      </div>
-                    </td>
                     <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                       <div className=" align-items-center flex justify-end space-x-3">
                         <Link
@@ -254,4 +250,4 @@ const ListAllDoctors = () => {
   );
 };
 
-export default ListAllDoctors;
+export default ListAppointment;

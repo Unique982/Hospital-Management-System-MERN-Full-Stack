@@ -5,7 +5,7 @@ import {
   MdEditNote,
   MdVisibility,
 } from "react-icons/md";
-const ListAllDoctors = () => {
+const ListAllNurse = () => {
   return (
     <>
       <div className=" relative mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
@@ -16,19 +16,19 @@ const ListAllDoctors = () => {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
-                    Doctors List
+                    Nurse List
                   </h2>
-                  <p className="mt-1 text-gray-500 dark:text-gray-300">
+                  {/* <p className="mt-1 text-gray-500 dark:text-gray-300">
                     All Doctors List
-                  </p>
+                  </p> */}
                 </div>
-                {/* Add New Doctors Button */}
+                {/* Add New Nurse Button */}
                 <Link
-                  to="/admin/staff/doctor/add"
+                  to="/admin/staff/nurse/add"
                   className="mt-4 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-600 md:mt-0"
                 >
                   <MdAdd className="h-6 w-5" />
-                  Add New Doctors
+                  Add New Nurse
                 </Link>
               </div>
               {/* Search and Filter */}
@@ -36,7 +36,7 @@ const ListAllDoctors = () => {
                 <div className="relative flex-grow">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                     <svg
-                      className="h-5 w-5 text-white dark:text-gray-500"
+                      className="text-dark h-5 w-5 dark:text-gray-500"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
@@ -72,7 +72,7 @@ const ListAllDoctors = () => {
                       scope="col"
                       className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Doctors Name
+                      Nurse Name
                     </th>
                     <th
                       scope="col"
@@ -90,7 +90,7 @@ const ListAllDoctors = () => {
                       scope="col"
                       className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Specialization
+                      Qualification
                     </th>
                     <th
                       scope="col"
@@ -128,7 +128,7 @@ const ListAllDoctors = () => {
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="text-sm text-gray-900 dark:text-gray-100">
-                        haha
+                        +12
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
@@ -254,4 +254,4 @@ const ListAllDoctors = () => {
   );
 };
 
-export default ListAllDoctors;
+export default ListAllNurse;

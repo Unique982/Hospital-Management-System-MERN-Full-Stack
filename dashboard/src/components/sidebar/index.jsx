@@ -34,6 +34,7 @@ const Sidebar = ({ open, onClose }) => {
       <div className="h-[calc(100%-5rem)] overflow-y-auto">
         <ul className="space-y-1 p-2">
           {routes.map((route, index) => {
+            if (route.hidden) return null;
             if (route.type === "divider") {
               return (
                 <li

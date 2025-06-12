@@ -1,11 +1,6 @@
 import { Link } from "react-router-dom";
-import {
-  MdAdd,
-  MdDeleteForever,
-  MdEditNote,
-  MdVisibility,
-} from "react-icons/md";
-const ListAllDoctors = () => {
+import { MdDeleteForever, MdEditNote, MdVisibility } from "react-icons/md";
+const ListInvoice = () => {
   return (
     <>
       <div className=" relative mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
@@ -16,19 +11,16 @@ const ListAllDoctors = () => {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">
-                    Doctors List
+                    Manage Invoice
                   </h2>
-                  <p className="mt-1 text-gray-500 dark:text-gray-300">
-                    All Doctors List
-                  </p>
                 </div>
-                {/* Add New Doctors Button */}
+                {/* Add Invoice Button*/}
+
                 <Link
-                  to="/admin/staff/doctor/add"
+                  to="/admin/invoice/add"
                   className="mt-4 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-600 md:mt-0"
                 >
-                  <MdAdd className="h-6 w-5" />
-                  Add New Doctors
+                  + Add Invoice
                 </Link>
               </div>
               {/* Search and Filter */}
@@ -64,37 +56,50 @@ const ListAllDoctors = () => {
                   <tr>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
                       id
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Doctors Name
+                      Invoice Number
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Email
+                      Patinet Name
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Phone Number
+                      Title
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
-                      Specialization
+                      Amount
                     </th>
                     <th
                       scope="col"
-                      className="px-6 py-3 text-center text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                    >
+                      Payment Method
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
+                    >
+                      Status
+                    </th>
+
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-right text-xs font-bold uppercase tracking-wider text-red-500 dark:text-gray-300"
                     >
                       Actions
                     </th>
@@ -112,24 +117,33 @@ const ListAllDoctors = () => {
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="text-sm text-gray-900 dark:text-gray-100">
-                        Testing Patient
+                        1000
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="text-sm text-gray-900 dark:text-gray-100">
-                        patient@gmail.com
-                      </div>
-                    </td>
-
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm text-gray-900 dark:text-gray-100">
-                        98********
+                        PatientTesting
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4">
                       <div className="text-sm text-gray-900 dark:text-gray-100">
-                        haha
+                        Check Up
                       </div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm text-gray-900 dark:text-gray-100">
+                        100
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <div className="text-sm text-gray-900 dark:text-gray-100">
+                        Online
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4">
+                      <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800 dark:bg-green-800 dark:text-green-100">
+                        paid
+                      </span>
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                       <div className=" align-items-center flex justify-end space-x-3">
@@ -254,4 +268,4 @@ const ListAllDoctors = () => {
   );
 };
 
-export default ListAllDoctors;
+export default ListInvoice;
