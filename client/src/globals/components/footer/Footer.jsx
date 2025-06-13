@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <>
@@ -17,7 +19,7 @@ const Footer = () => {
                 beatae id, at dicta.
               </p>
               <div className="mt-[18px] flex gap-4">
-                <a className="hover:scale-110" target="_blank" href="#">
+                <Link className="hover:scale-110" target="_blank" href="#">
                   <img
                     alt="facebook icon"
                     loading="lazy"
@@ -26,10 +28,10 @@ const Footer = () => {
                     decoding="async"
                     data-nimg={1}
                     style={{ color: "transparent" }}
-                    src="https://img.freepik.com/premium-vector/facebook-icon-design-idea_1127227-1370.jpg"
+                    src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png"
                   />
-                </a>
-                <a className="hover:scale-110" target="_blank" href="/">
+                </Link>
+                <Link className="hover:scale-110" target="_blank" href="/">
                   <img
                     alt="linkdin icon"
                     loading="lazy"
@@ -38,10 +40,10 @@ const Footer = () => {
                     decoding="async"
                     data-nimg={1}
                     style={{ color: "transparent" }}
-                    src="https://www.englishyaari.com/img/linkdin.svg"
+                    src="https://www.svgrepo.com/show/28145/linkedin.svg"
                   />
-                </a>
-                <a className="hover:scale-110" target="_blank" href="/">
+                </Link>
+                <Link className="hover:scale-110" target="_blank" href="/">
                   <img
                     alt="instagram icon"
                     loading="lazy"
@@ -50,22 +52,22 @@ const Footer = () => {
                     decoding="async"
                     data-nimg={1}
                     style={{ color: "transparent" }}
-                    src="https://www.englishyaari.com/img/instagram1.svg"
+                    src="https://cdn-icons-png.flaticon.com/128/174/174855.png"
                   />
-                </a>
-                <a className="hover:scale-110" target="_blank" href>
+                </Link>
+                <Link className="hover:scale-110" target="_blank" href>
                   <img
-                    alt="twitter icon"
+                    alt="github"
                     loading="lazy"
                     width={36}
                     height={36}
                     decoding="async"
                     data-nimg={1}
                     style={{ color: "transparent" }}
-                    src="https://www.englishyaari.com/img/twitter.svg"
+                    src="https://cdn-icons-png.flaticon.com/128/25/25231.png"
                   />
-                </a>
-                <a
+                </Link>
+                <Link
                   className="hover:scale-110"
                   target="_blank"
                   href="https://www.youtube.com/"
@@ -78,9 +80,9 @@ const Footer = () => {
                     decoding="async"
                     data-nimg={1}
                     style={{ color: "transparent" }}
-                    src="https://www.englishyaari.com/img/youtube.svg"
+                    src="https://cdn-icons-png.flaticon.com/128/5968/5968852.png"
                   />
-                </a>
+                </Link>
               </div>
             </div>
             <div className="md:w-[316px]">
@@ -100,12 +102,12 @@ const Footer = () => {
                   </svg>
                 </div>
                 <div className="ml-[18px]">
-                  <a
+                  <Link
                     href="tel:+911800123444"
                     className="font-Inter text-[14px] font-medium text-white"
                   >
                     +977-9809559560
-                  </a>
+                  </Link>
                   <p className="font-Inter text-[12px] font-medium text-white">
                     Support Number
                   </p>
@@ -127,12 +129,12 @@ const Footer = () => {
                   </svg>
                 </div>
                 <div className="ml-[18px]">
-                  <a
+                  <Link
                     href="mailto:uniqueneupabne153@gmail.com"
                     className="font-Inter text-[14px] font-medium text-[#fff]"
                   >
                     uniqueneupabne153@gmail.com
-                  </a>
+                  </Link>
                   <p className="font-Inter text-[12px] font-medium text-[#fff]">
                     Support Email
                   </p>
@@ -154,12 +156,12 @@ const Footer = () => {
                   </svg>
                 </div>
                 <div className="ml-[18px]">
-                  <a
+                  <Link
                     href="mailto:help@lorem.com"
                     className="font-Inter text-[14px] font-medium text-[#fff]"
                   >
                     KTM Nepal
-                  </a>
+                  </Link>
                   <p className="font-Inter text-[12px] font-medium text-white">
                     Address
                   </p>
@@ -167,58 +169,58 @@ const Footer = () => {
               </div>
             </div>
             <div className="mt-6 flex w-full flex-col justify-between text-white sm:flex-row md:mt-0 md:max-w-[341px]">
-              <div className>
+              <div>
                 <p className="text-deutziawhite font-inter text-[18px] font-medium leading-normal">
                   Pages
                 </p>
                 <ul>
                   <li className="mt-[15px]">
-                    <a
+                    <Link
                       className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
                       href="/"
                     >
                       Home
-                    </a>
+                    </Link>
                   </li>
                   <li className="mt-[15px]">
-                    <a
+                    <Link
                       className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
                       href="/our-tutors"
                     >
                       About
-                    </a>
+                    </Link>
                   </li>
                   <li className="mt-[15px]">
-                    <a
+                    <Link
                       className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
                       href="/become-a-tutor"
                     >
                       Contact
-                    </a>
+                    </Link>
                   </li>
                   <li className="mt-[15px]">
-                    <a
+                    <Link
                       className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
                       href="/plans-and-pricing"
                     >
                       Appointment
-                    </a>
+                    </Link>
                   </li>
                   <li className="mt-[15px]">
-                    <a
+                    <Link
                       className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
                       href="/terms-and-conditions"
                     >
                       Terms and conditions
-                    </a>
+                    </Link>
                   </li>
                   <li className="mt-[15px]">
-                    <a
+                    <Link
                       className="text-deutziawhite hover:text-deutziawhite/80 font-inter text-[15px] font-normal hover:font-semibold"
                       href="/privacy-policy"
                     >
                       Privcay policy
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -227,30 +229,18 @@ const Footer = () => {
                   Download the app
                 </p>
                 <div className="flex gap-4 sm:flex-col">
-                  <a target="_blank" href="#">
+                  <Link target="_blank" href="#">
                     <img
-                      alt="facebook icon"
+                      alt="google play store"
                       loading="lazy"
                       width={168}
                       height={50}
                       decoding="async"
                       data-nimg={1}
                       style={{ color: "transparent" }}
-                      src="https://www.englishyaari.com/img/google-store.svg"
+                      src="https://cdn-icons-png.flaticon.com/128/732/732208.png"
                     />
-                  </a>
-                  <a target="_blank" href="#">
-                    <img
-                      alt="facebook icon"
-                      loading="lazy"
-                      width={168}
-                      height={50}
-                      decoding="async"
-                      data-nimg={1}
-                      style={{ color: "transparent" }}
-                      src="https://www.englishyaari.com/img/apple-store.svg"
-                    />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

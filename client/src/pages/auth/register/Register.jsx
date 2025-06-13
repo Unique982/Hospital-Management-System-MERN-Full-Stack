@@ -1,5 +1,35 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addPatient, setPatientData } from "../../../store/authSlice";
+
 const Register = () => {
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
+  const [patientData, setPatientData] = useState({
+    userName: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    age: "",
+    phoneNumber: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+
+    setPatientData({
+      ...patientData,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(addPatient(patientData));
+  };
   return (
     <>
       <div className="bg-gray-50 fixed inset-0 z-50 flex items-center justify-center overflow-y-auto px-4">
@@ -8,17 +38,18 @@ const Register = () => {
             Register New Patient
           </h2>
 
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
             <div>
-              <label
-                htmlFor="userName"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Username
               </label>
               <input
                 type="text"
                 id="userName"
+                onChange={handleChange}
                 name="userName"
                 placeholder="Enter username"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
@@ -26,15 +57,13 @@ const Register = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
+                onChange={handleChange}
                 name="email"
                 placeholder="Enter email"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
@@ -42,15 +71,13 @@ const Register = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="firstName"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 First Name
               </label>
               <input
                 type="text"
                 id="firstName"
+                onChange={handleChange}
                 name="firstName"
                 placeholder="Enter first name"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
@@ -58,31 +85,26 @@ const Register = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="lastName"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Last Name
               </label>
               <input
                 type="text"
+                onChange={handleChange}
                 id="lastName"
                 name="lastName"
                 placeholder="Enter last name"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
               />
             </div>
-
             <div>
-              <label
-                htmlFor="address"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Address
               </label>
               <input
                 type="text"
                 id="address"
+                onChange={handleChange}
                 name="address"
                 placeholder="Enter address"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
@@ -90,15 +112,13 @@ const Register = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="age"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Age
               </label>
               <input
                 type="number"
                 id="age"
+                onChange={handleChange}
                 name="age"
                 placeholder="Enter age"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
@@ -106,30 +126,25 @@ const Register = () => {
             </div>
 
             <div>
-              <label
-                htmlFor="phoneNumber"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Phone Number
               </label>
               <input
                 type="text"
+                onChange={handleChange}
                 id="phoneNumber"
                 name="phoneNumber"
                 placeholder="Enter phone number"
                 className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
               />
             </div>
-
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Password
               </label>
               <input
                 type="password"
+                onChange={handleChange}
                 id="password"
                 name="password"
                 placeholder="Enter password"

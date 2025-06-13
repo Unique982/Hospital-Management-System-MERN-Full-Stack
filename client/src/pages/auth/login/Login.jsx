@@ -57,6 +57,7 @@ const Login = () => {
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
+                <span className="text-red-200">*</span>
                 <input
                   name="password"
                   type="password"

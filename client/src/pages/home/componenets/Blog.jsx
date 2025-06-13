@@ -1,31 +1,93 @@
+import { Link } from "react-router-dom";
 import Card from "../../../globals/components/card/Card";
+import Navbar from "../../../globals/components/navbar/Navbar";
 
 const Blog = () => {
   return (
     <>
-      <section id="blog">
-        <div className="py-6 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-6">
-            {/* Section Header */}
-            <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-indigo-700 to-orange-400 bg-clip-text text-transparent">
-                Our Blog
-              </h2>
-              <div className="flex flex-col items-center gap-1">
-                <span className="w-40 h-1 bg-rose-500 rounded"></span>
-                <span className="w-20 h-1 bg-rose-500 rounded"></span>
-              </div>
-
-              <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-500">
-                Stay informed with our latest updates, healthcare news, and
-                expert insights to help you make better decisions for your
-                well-being.
-              </p>
-            </div>
-            <Card />
-          </div>
+      <Navbar />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="text-left mt-10">
+          <h2 className="text-3xl font-bold text-gray-500">All Blog Posts</h2>
+          <p className="text-gray-500 mt-2">
+            Stay informed with our latest updates, healthcare news, and expert
+            insights.
+          </p>
         </div>
-      </section>
+        <div className="flex flex-4 mt-10 ">
+          <Card />
+        </div>
+      </div>
+      {/* Pagination */}
+      <div className="flex justify-center items-center mb-7 py-6">
+        <nav
+          className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+          aria-label="Pagination"
+        >
+          <Link
+            href="#"
+            className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+          >
+            <span className="sr-only">Previous</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </Link>
+          {[1, 2, 3].map((num) => (
+            <Link
+              key={num}
+              to=""
+              className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              {num}
+            </Link>
+          ))}
+          <span className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
+            ...
+          </span>
+          {[8, 9, 10].map((num) => (
+            <Link
+              key={num}
+              href="#"
+              className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
+            >
+              {num}
+            </Link>
+          ))}
+          <Link
+            to=""
+            className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+          >
+            <span className="sr-only">Next</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </Link>
+        </nav>
+      </div>
     </>
   );
 };
