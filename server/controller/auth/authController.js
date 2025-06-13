@@ -41,7 +41,7 @@ exports.registerUser = async (req, res, next) => {
       password: bcrypt.hashSync(password, 12),
     });
     // patient table insert
-    await patients.create({
+    const userData = await patients.create({
       user_id: newUser.id,
       firstName,
       lastName,
@@ -63,7 +63,7 @@ If you did not register for this account, please contact our support team immedi
 Thank you,  
 Hospital Management System Team`,
     });
-    res.json({ message: "Added New Patient Succssfully" });
+    res.json({ message: "Added New Patient Succssfully", data: userData });
   } catch (err) {
     console.log(err.message);
     res.status(500).json({ message: "insert failed " });

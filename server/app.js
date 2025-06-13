@@ -4,8 +4,14 @@ const express = require("express");
 const db = require("./database/connection");
 // dot env (Enviroment File)
 const dotenv = require("dotenv").config();
+const cors = require("cors");
 
 const app = express();
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -24,7 +30,7 @@ const bloodDonorRouter = require("./routes/bloodDonorRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
 const reportRoutes = require("./routes/reportRoutes");
 
-app.use("", authRoutes);
+app.use("/api", authRoutes);
 app.use("/api", patientRoutes);
 app.use("/api", doctorRoutes);
 app.use("/api", nurseRoutes);
