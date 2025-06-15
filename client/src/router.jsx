@@ -13,6 +13,11 @@ import Contact from "./pages/home/componenets/Contact";
 import Gallery from "./pages/home/componenets/Gallery";
 import SinglePage from "./pages/home/componenets/Single";
 
+
+
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,5 +51,6 @@ const router = createBrowserRouter([
     path: "/reset-password",
     element: <ResetPassword />,
   },
+ 
 ]);
 export default router;

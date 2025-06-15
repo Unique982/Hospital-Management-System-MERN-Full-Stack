@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addPatient, setPatientData } from "../../../store/authSlice";
+import { registerPatient, setUserData } from "../../../store/authSlice";
+import { STATUSES } from "../../../globals/status/StatusCode";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const navigate =useNavigate()
   const { status } = useSelector((state) => state.auth);
-  const [patientData, setPatientData] = useState({
+  const [userData, setUserData] = useState({
     userName: "",
     email: "",
     firstName: "",
@@ -20,15 +22,22 @@ const Register = () => {
   const handleChange = (e) => {
     let { name, value } = e.target;
 
-    setPatientData({
-      ...patientData,
+   setUserData({
+      ...userData,
       [name]: value,
     });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(addPatient(patientData));
+    dispatch(registerPatient(userData));
+    if(status ===STATUSES.SUCCESS){
+      return navigate('/login')
+    }
+    if(status===STATUSES.ERROR){
+      alert("something went wrong, try agnain")
+      return;
+    }
   };
   return (
     <>

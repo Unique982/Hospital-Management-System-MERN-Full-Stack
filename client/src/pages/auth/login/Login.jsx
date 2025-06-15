@@ -1,7 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ForgotPassword from "../forgetpasssword/ForgetPassword";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../../../store/authSlice";
+import { STATUSES } from "../../../globals/status/StatusCode";
 
 const Login = () => {
+ const navigate = useNavigate()
+ const dispatch = useDispatch()
+ const { data,token,status } = useSelector((state) => state.auth);
+  const [userData, setUserData] = useState({
+    email:'',
+    password:'',
+  })
+  const handleChange = (e)=>{
+    const {name,value}=e.target
+    
+    setUserData({
+      ...userData,
+      [name]:value
+    })
+  }
+ const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(loginUser(userData))
+  }
+  useEffect(()=>{
+    if(status===STATUSES.SUCCESS && token){
+      localStorage.setItem('token',token);
+      // redirect dashboard 
+      window.location.href ="http://localhost:3000/admin/dashboard"
+      return 
+    }
+    if(status===STATUSES.ERROR){
+      alert("login Failed")
+    
+      return 
+    }
+  },[status,token])
+  
   return (
     <>
       <div className="bg-gray-50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-full items-center justify-center flex">
@@ -41,18 +78,16 @@ const Login = () => {
                 OR
                 <div className="h-px w-full bg-slate-200" />
               </div>
-              <form className="w-full">
+              <form className="w-full" onSubmit={handleSubmit}>
                 <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
                   name="email"
+                  onChange={handleChange}
                   type="email"
-                  autoComplete="email"
-                  required
                   className="block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                   placeholder="Email Address"
-                  defaultValue
                 />
                 <label htmlFor="password" className="sr-only">
                   Password
@@ -60,12 +95,10 @@ const Login = () => {
                 <span className="text-red-200">*</span>
                 <input
                   name="password"
+                   onChange={handleChange}
                   type="password"
-                  autoComplete="current-password"
-                  required
                   className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                   placeholder="Password"
-                  defaultValue
                 />
                 <p className="mb-3 mt-2 text-sm text-gray-500">
                   <Link
