@@ -28,9 +28,10 @@ exports.registerUser = async (req, res, next) => {
     ) {
       return res.json({ message: "All filed is require" });
     }
+    // check email user already exist or not
     const userExist = await users.findOne({ where: { email } });
     if (userExist) {
-      return res.status(400).json({ message: "Email is already registered." });
+      return res.status(400).json({ message: "Email is already registered.",data:[] });
     }
 
     // user table insert
@@ -73,16 +74,16 @@ Hospital Management System Team`,
 // login code
 exports.loginUser = async (req, res, next) => {
   try {
-    const { email, role, password } = req.body;
-    if (!email || !role || !password) {
-      return res.json({ message: "Please provide email,role and passsword" });
+    const { email, password } = req.body;
+    if (!email  || !password) {
+      return res.json({ message: "Please provide email and passsword" });
     }
     // check email user exits or not
     const userFound = await users.findOne({
-      where: { email, role },
+      where: { email },
     });
     if (!userFound) {
-      return res.json({ message: "Email or role not registered" });
+      return res.json({ message: "Email  not registered" });
     }
     // password check
     const isMatched = bcrypt.compareSync(password, userFound.password);
@@ -90,7 +91,7 @@ exports.loginUser = async (req, res, next) => {
       const token = jwt.sign({ id: userFound.id }, process.env.SECRETKEY, {
         expiresIn: "30d",
       });
-      return res.json({ message: "User Logged successfully!", token });
+      return res.json({ message: "User Logged successfully!",data:userFound, token :token});
     } else {
       return res.json({ message: "Invalid user" });
     }

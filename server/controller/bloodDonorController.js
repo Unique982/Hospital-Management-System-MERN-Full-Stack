@@ -1,6 +1,6 @@
 const { bloodDonrs } = require("../database/connection");
 
-exports.getBloodDonorData = async (req, res, next) => {
+exports.getBloodDonorData = async (req, res) => {
   try {
     const donnorsdata = await bloodDonrs.findAll();
     res.json({
@@ -13,7 +13,7 @@ exports.getBloodDonorData = async (req, res, next) => {
 };
 
 // add new bloodDonor
-exports.addBloodDonor = async (req, res, next) => {
+exports.addBloodDonor = async (req, res) => {
   try {
     const {
       name,
