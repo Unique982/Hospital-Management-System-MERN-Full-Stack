@@ -1,6 +1,44 @@
-import { Link } from "react-router-dom";
+import { STATUSES } from "globals/status/StatusCode";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { addDoctors } from "store/feature/doctorSlice";
 
 const AddDoctors = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.doctor);
+  const [doctorData, setDoctorData] = useState({
+    userName: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+    specialization: "",
+    qualification: "",
+    gender: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setDoctorData({
+      ...doctorData,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addDoctors(doctorData));
+    if (status === STATUSES.SUCCESS) {
+      navigate("/admin/staff/doctors");
+    }
+    if (status === STATUSES.ERROR) {
+      alert("something went wrong,try again");
+      return;
+    }
+  };
+
   return (
     <>
       <div className="relative  mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
@@ -11,7 +49,7 @@ const AddDoctors = () => {
         </div>
 
         <div className="space-y-6 p-6">
-          <form action="#">
+          <form action="#" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-6">
               {/*User Name Doctors */}
               <div>
@@ -21,6 +59,7 @@ const AddDoctors = () => {
                 <input
                   type="text"
                   name="userName"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
                                    dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
@@ -36,6 +75,7 @@ const AddDoctors = () => {
                 <input
                   type="text"
                   name="firstName"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
                                    dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
@@ -52,6 +92,7 @@ const AddDoctors = () => {
                 <input
                   type="text"
                   name="lastName"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
                                    dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
@@ -67,6 +108,7 @@ const AddDoctors = () => {
                 <input
                   type="text"
                   name="email"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
                                    dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
@@ -81,7 +123,8 @@ const AddDoctors = () => {
                 </label>
                 <input
                   type="text"
-                  name="phone"
+                  name="phoneNumber"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
                                    dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
@@ -96,6 +139,7 @@ const AddDoctors = () => {
                 </label>
                 <input
                   type="text"
+                  onChange={handleChange}
                   name="address"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
@@ -112,6 +156,7 @@ const AddDoctors = () => {
                 <select
                   name="specialization"
                   id="specialization"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
                focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-white 
                dark:focus:border-cyan-500 dark:focus:ring-cyan-500"
@@ -119,8 +164,8 @@ const AddDoctors = () => {
                   <option selected disabled>
                     Choose Specialization
                   </option>
-                  <option value="">Testing</option>
-                  <option value="">Testing 2</option>
+                  <option value="testing">Testing</option>
+                  <option value="testing">Testing 2</option>
                 </select>
               </div>
               {/* qualification  */}
@@ -131,6 +176,7 @@ const AddDoctors = () => {
                 <input
                   type="text"
                   name="qualification"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
                                    dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
@@ -146,6 +192,7 @@ const AddDoctors = () => {
                 <select
                   name="gender"
                   id="gender"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 
                focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-white 
                dark:focus:border-cyan-500 dark:focus:ring-cyan-500"
@@ -166,6 +213,7 @@ const AddDoctors = () => {
                 <input
                   type="password"
                   name="password"
+                  onChange={handleChange}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm
                                    focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600
                                    dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"

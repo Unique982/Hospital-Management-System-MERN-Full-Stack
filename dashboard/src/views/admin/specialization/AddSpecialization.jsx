@@ -1,7 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { STATUSES } from "globals/status/StatusCode";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { addSpecialization } from "../../../store/feature/specializationSlice";
 
 const AddSpecialization = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.specialization);
+  const [specializationData, setSpecializationData] = useState({
+    specialization: "",
+    description: "",
+    symptoms: "",
+  });
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setSpecializationData({
+      ...specializationData,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addSpecialization(specializationData));
+    if (status === STATUSES.SUCCESS) {
+      navigate("/admin/specialization");
+    }
+    if (status === STATUSES.ERROR) {
+      alert("something went wrong, try again");
+      return;
+    }
+  };
   return (
     <>
       <div className="relative  mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
@@ -12,7 +41,7 @@ const AddSpecialization = () => {
         </div>
 
         <div className="space-y-6 p-6">
-          <form action="#">
+          <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-6">
               {/*Specialization */}
               <div>
@@ -21,6 +50,7 @@ const AddSpecialization = () => {
                 </label>
                 <input
                   type="text"
+                  onChange={handleChange}
                   name="specialization"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter specialization"
@@ -34,6 +64,7 @@ const AddSpecialization = () => {
                 </label>
                 <input
                   type="text"
+                  onChange={handleChange}
                   name="symptoms"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 shadow-sm focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 sm:text-sm"
                   placeholder="Enter symtoms.."
@@ -49,6 +80,8 @@ const AddSpecialization = () => {
                 </label>
                 <textarea
                   id="description"
+                  onChange={handleChange}
+                  name="description"
                   rows={3}
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 text-gray-900
                            focus:border-cyan-600 focus:ring-cyan-600 dark:border-gray-600

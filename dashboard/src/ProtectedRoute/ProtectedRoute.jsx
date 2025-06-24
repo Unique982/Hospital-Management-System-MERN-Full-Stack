@@ -5,7 +5,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (token) {
     window.location.href = "http://localhost:5173/login";
-    return null; 
+    return null;
   }
   return children;
 };

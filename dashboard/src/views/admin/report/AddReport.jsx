@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const AddReport = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [reportData, setReportData] = useState({});
   return (
     <>
       <div className="relative  mt-10 rounded-lg bg-white shadow dark:bg-gray-900">

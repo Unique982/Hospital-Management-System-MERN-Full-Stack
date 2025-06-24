@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
 import { MdDeleteForever, MdEditNote, MdVisibility } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchAppointmentData } from "store/feature/appointmentSlice";
+import Loader from "components/loader/Loader";
 const ListAppointment = () => {
+  const dispatch = useDispatch();
+  const { data, status } = useSelector((state) => state.appointment);
+  useEffect(() => {
+    dispatch(fetchAppointmentData());
+  }, []);
+  if (status === "loading") {
+    return <Loader />;
+  }
   return (
     <>
       <div className=" relative mt-10 rounded-lg bg-white shadow dark:bg-gray-900">
@@ -92,64 +104,67 @@ const ListAppointment = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
-                  {/* Row 1 */}
-                  <tr className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-800">
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="flex items-center">
-                        <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
-                          1
-                        </div>
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm text-gray-900 dark:text-gray-100">
-                        Testing Patient
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm text-gray-900 dark:text-gray-100">
-                        Testing Doctors
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800 dark:bg-green-800 dark:text-green-100">
-                        Padding
-                      </span>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm text-gray-900 dark:text-gray-100">
-                        2082-02-1
-                      </div>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-4">
-                      <div className="text-sm text-gray-900 dark:text-gray-100">
-                        10:30Am
-                      </div>
-                    </td>
+                  {(data || []).map((appointment, index) => {
+                    return (
+                      <tr className="transition-colors duration-150 hover:bg-gray-50 dark:hover:bg-gray-800">
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <div className="flex items-center">
+                            <div className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                              1
+                            </div>
+                          </div>
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <div className="text-sm text-gray-900 dark:text-gray-100">
+                            Testing Patient
+                          </div>
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <div className="text-sm text-gray-900 dark:text-gray-100">
+                            Testing Doctors
+                          </div>
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800 dark:bg-green-800 dark:text-green-100">
+                            Padding
+                          </span>
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <div className="text-sm text-gray-900 dark:text-gray-100">
+                            2082-02-1
+                          </div>
+                        </td>
+                        <td className="whitespace-nowrap px-6 py-4">
+                          <div className="text-sm text-gray-900 dark:text-gray-100">
+                            10:30Am
+                          </div>
+                        </td>
 
-                    <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
-                      <div className=" align-items-center flex justify-end space-x-3">
-                        <Link
-                          to=""
-                          className="inline-flex items-center rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700"
-                        >
-                          <MdVisibility className="mr-1 h-6 w-5" />
-                        </Link>
-                        <Link
-                          to=""
-                          className="inline-flex items-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-700"
-                        >
-                          <MdEditNote className="mr-1 h-6 w-5" />
-                        </Link>
-                        <Link
-                          to=""
-                          className="inline-flex items-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
-                        >
-                          <MdDeleteForever className="mr-1 h-6 w-5" />
-                        </Link>
-                      </div>
-                    </td>
-                  </tr>
+                        <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
+                          <div className=" align-items-center flex justify-end space-x-3">
+                            <Link
+                              to=""
+                              className="inline-flex items-center rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700"
+                            >
+                              <MdVisibility className="mr-1 h-6 w-5" />
+                            </Link>
+                            <Link
+                              to=""
+                              className="inline-flex items-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-700"
+                            >
+                              <MdEditNote className="mr-1 h-6 w-5" />
+                            </Link>
+                            <Link
+                              to=""
+                              className="inline-flex items-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
+                            >
+                              <MdDeleteForever className="mr-1 h-6 w-5" />
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
