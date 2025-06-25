@@ -58,6 +58,9 @@ import PaymentHistory from "views/admin/invoice/paymentHistory";
 import ListInvoice from "views/admin/invoice";
 import AddInvoice from "views/admin/invoice/AddInvoice";
 import ListAppointment from "views/admin/appointment";
+import SingleBloodDonor from "views/admin/bloodDonor/SingleBloodDonor";
+import SingleSpecialization from "views/admin/specialization/SingleSpecialization";
+import SinglePatient from "views/admin/patient/SinglePatient";
 
 const routes = [
   {
@@ -326,6 +329,25 @@ const routes = [
     layout: "/admin",
     path: "invoice/add",
     component: <AddInvoice />,
+    hidden: true,
+  },
+  // single page view route
+  {
+    layout: "/admin",
+    path: "blood/view/:id",
+    component: <SingleBloodDonor />,
+    hidden: true,
+  },
+  {
+    layout: "/admin",
+    path: "specialization/view/:id",
+    component: <SingleSpecialization />,
+    hidden: true,
+  },
+  {
+    layout: "/admin",
+    path: "patient/view/:id",
+    component: <SinglePatient />,
     hidden: true,
   },
 ];

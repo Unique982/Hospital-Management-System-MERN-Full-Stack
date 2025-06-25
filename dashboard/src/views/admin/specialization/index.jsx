@@ -7,9 +7,13 @@ import {
 } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchSpecailzation } from "store/feature/specializationSlice";
+import {
+  fetchSpecailzation,
+  deleteSpecialization,
+} from "store/feature/specializationSlice";
 import Loader from "components/loader/Loader";
 import Pagination from "components/pagination";
+
 const ListAllSpecialization = () => {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.specialization);
@@ -17,6 +21,12 @@ const ListAllSpecialization = () => {
   useEffect(() => {
     dispatch(fetchSpecailzation());
   }, []);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure want to delete this specialization"))
+      dispatch(deleteSpecialization(id));
+  };
+
   if (status === "loading") {
     return <Loader />;
   }
@@ -120,7 +130,7 @@ const ListAllSpecialization = () => {
                         <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                           <div className=" align-items-center flex justify-end space-x-3">
                             <Link
-                              to=""
+                              to={`/admin/specialization/view/${specialization.id}`}
                               className="inline-flex items-center rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700"
                             >
                               <MdVisibility className="mr-1 h-6 w-5" />
@@ -131,12 +141,12 @@ const ListAllSpecialization = () => {
                             >
                               <MdEditNote className="mr-1 h-6 w-5" />
                             </Link>
-                            <Link
-                              to=""
+                            <button
+                              onClick={() => handleDelete(specialization.id)}
                               className="inline-flex items-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                             >
                               <MdDeleteForever className="mr-1 h-6 w-5" />
-                            </Link>
+                            </button>
                           </div>
                         </td>
                       </tr>

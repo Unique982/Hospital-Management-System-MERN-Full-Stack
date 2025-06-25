@@ -6,6 +6,7 @@ const specializationSlice = createSlice({
   name: "specialization",
   initialState: {
     data: [],
+    single: null,
     status: STATUSES.SUCCESS,
   },
   reducers: {
@@ -15,9 +16,22 @@ const specializationSlice = createSlice({
     setStatus(state, action) {
       state.status = action.payload;
     },
+    deleteSpecializationId(state, action) {
+      state.data = state.data.filter(
+        (specialization) => specialization.id !== action.payload.id
+      );
+    },
+    singleSpecializationData(state, action) {
+      state.singleData = action.payload;
+    },
   },
 });
-export const { setSpecialization, setStatus } = specializationSlice.actions;
+export const {
+  setSpecialization,
+  setStatus,
+  deleteSpecializationId,
+  singleSpecializationData,
+} = specializationSlice.actions;
 
 export default specializationSlice.reducer;
 
@@ -39,6 +53,35 @@ export function fetchSpecailzation(spDatas) {
     try {
       const response = await API.get("/specialization");
       dispatch(setSpecialization(response.data.spDatas));
+      dispatch(setStatus(STATUSES.SUCCESS));
+    } catch (err) {
+      dispatch(setStatus(STATUSES.ERROR));
+    }
+  };
+}
+
+// delete function
+export function deleteSpecialization(specializationId) {
+  return async (dispatch) => {
+    dispatch(setStatus(STATUSES.LOADING));
+    try {
+      const response = await API.delete(`/specialization/${specializationId}`);
+      dispatch(deleteSpecializationId({ id: specializationId }));
+
+      dispatch(setStatus(STATUSES.SUCCESS));
+    } catch (err) {
+      dispatch(setStatus(STATUSES.SUCCESS));
+    }
+  };
+}
+
+// single data fetch
+export function singleSpecialization(specializationId) {
+  return async (dispatch) => {
+    dispatch(setStatus(STATUSES.LOADING));
+    try {
+      const response = await API.get(`/specialization/${specializationId}`);
+      dispatch(singleSpecializationData(response.data.spDatas));
       dispatch(setStatus(STATUSES.SUCCESS));
     } catch (err) {
       dispatch(setStatus(STATUSES.ERROR));

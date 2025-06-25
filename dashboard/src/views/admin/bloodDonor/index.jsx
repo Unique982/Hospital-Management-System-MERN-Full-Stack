@@ -171,7 +171,7 @@ const ListBloodDonor = () => {
                         <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                           <div className=" align-items-center flex justify-end space-x-3">
                             <Link
-                              to=""
+                              to={`/admin/blood/view/${bloodDonor.id}`}
                               className="inline-flex items-center rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700"
                             >
                               <MdVisibility className="mr-1 h-6 w-5" />
@@ -196,9 +196,9 @@ const ListBloodDonor = () => {
                 </tbody>
               </table>
             </div>
+            {/* {pagination } */}
+            <Pagination />
           </div>
-          {/* {pagination } */}
-          <Pagination />
         </div>
       </div>
     </>

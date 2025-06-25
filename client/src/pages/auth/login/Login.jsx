@@ -6,39 +6,39 @@ import { loginUser } from "../../../store/authSlice";
 import { STATUSES } from "../../../globals/status/StatusCode";
 
 const Login = () => {
- const navigate = useNavigate()
- const dispatch = useDispatch()
- const { data,token,status } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { data, token, status } = useSelector((state) => state.auth);
   const [userData, setUserData] = useState({
-    email:'',
-    password:'',
-  })
-  const handleChange = (e)=>{
-    const {name,value}=e.target
-    
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setUserData({
       ...userData,
-      [name]:value
-    })
-  }
- const handleSubmit = (e) => {
+      [name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(userData))
-  }
-  useEffect(()=>{
-    if(status===STATUSES.SUCCESS && token){
-      localStorage.setItem('token',token);
-      // redirect dashboard 
-      window.location.href ="http://localhost:3000/admin/dashboard"
-      return 
+    dispatch(loginUser(userData));
+  };
+  useEffect(() => {
+    if (status === STATUSES.SUCCESS && token) {
+      localStorage.setItem("token", token);
+      // redirect dashboard
+      window.location.href = "http://localhost:3000/admin/dashboard";
+      return;
     }
-    if(status===STATUSES.ERROR){
-      alert("login Failed")
-    
-      return 
+    if (status === STATUSES.ERROR) {
+      alert("login Failed");
+
+      return;
     }
-  },[status,token])
-  
+  }, [status, token]);
+
   return (
     <>
       <div className="bg-gray-50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 h-full items-center justify-center flex">
@@ -95,7 +95,7 @@ const Login = () => {
                 <span className="text-red-200">*</span>
                 <input
                   name="password"
-                   onChange={handleChange}
+                  onChange={handleChange}
                   type="password"
                   className="mt-2 block w-full rounded-lg border border-gray-300 px-3 py-2 shadow-sm outline-none placeholder:text-gray-400 focus:ring-2 focus:ring-black focus:ring-offset-1"
                   placeholder="Password"

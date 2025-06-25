@@ -7,15 +7,24 @@ import {
 } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchBedsAllocated } from "store/feature/bedsAllocated";
+import {
+  fetchBedsAllocated,
+  deleteBedAllocated,
+} from "store/feature/bedsAllocated";
 import Loader from "components/loader/Loader";
 import Pagination from "components/pagination";
+
 const ListAllAllocatedBeds = () => {
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.bedAllocated);
   useEffect(() => {
     dispatch(fetchBedsAllocated());
   }, []);
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure want to delete the allocated"))
+      dispatch(deleteBedAllocated(id));
+  };
   if (status === "loading") {
     return <Loader />;
   }
@@ -137,12 +146,12 @@ const ListAllAllocatedBeds = () => {
                             >
                               <MdEditNote className="mr-1 h-6 w-5" />
                             </Link>
-                            <Link
-                              to=""
+                            <button
+                              onClick={() => handleDelete(bedAllocated.id)}
                               className="inline-flex items-center rounded-md bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-red-600 dark:bg-red-600 dark:hover:bg-red-700"
                             >
                               <MdDeleteForever className="mr-1 h-6 w-5" />
-                            </Link>
+                            </button>
                           </div>
                         </td>
                       </tr>

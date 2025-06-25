@@ -1,4 +1,5 @@
 import API from "http";
+import SingleBloodDonor from "views/admin/bloodDonor/SingleBloodDonor";
 
 const { createSlice } = require("@reduxjs/toolkit");
 const { STATUSES } = require("globals/status/StatusCode");
@@ -7,6 +8,7 @@ const bloodDonorSlice = createSlice({
   name: "bloodDonor",
   initialState: {
     data: [],
+    single: null,
     status: STATUSES.SUCCESS,
   },
   reducers: {
@@ -21,10 +23,17 @@ const bloodDonorSlice = createSlice({
         (bloodDonor) => bloodDonor.id !== action.payload.id
       );
     },
+    singleBloodDonor(state, action) {
+      state.singleDonor = action.payload;
+    },
   },
 });
-export const { setBloodDonor, setStatus, deleteBloodDonorByID } =
-  bloodDonorSlice.actions;
+export const {
+  setBloodDonor,
+  setStatus,
+  deleteBloodDonorByID,
+  singleBloodDonor,
+} = bloodDonorSlice.actions;
 export default bloodDonorSlice.reducer;
 
 // fecth all data
@@ -62,6 +71,20 @@ export function deleteBloodDonor(bloodDonorId) {
       dispatch(deleteBloodDonorByID({ id: bloodDonorId }));
       dispatch(setStatus(STATUSES.SUCCESS));
     } catch (error) {
+      dispatch(setStatus(STATUSES.ERROR));
+    }
+  };
+}
+
+// single data fetch
+export function singleBloodDonorData(bloodDonorId) {
+  return async (dispatch) => {
+    dispatch(setStatus(STATUSES.LOADING));
+    try {
+      const response = await API.get(`/blood-donor/${bloodDonorId}`);
+      dispatch(singleBloodDonor(response.data.singleData));
+      dispatch(setStatus(STATUSES.SUCCESS));
+    } catch (err) {
       dispatch(setStatus(STATUSES.ERROR));
     }
   };

@@ -3,8 +3,8 @@ const { allocateds } = require("../database/connection");
 // all data fetch
 exports.getBedAllocatedFetch = async (req, res, next) => {
   try {
-    const alldats = await allocateds.findAll();
-    res.json({ message: "fetch successfully!", alldats });
+    const alldatas = await allocateds.findAll();
+    res.json({ message: "fetch successfully!", alldatas });
   } catch (err) {
     res.json({ message: "error fetch" });
   }

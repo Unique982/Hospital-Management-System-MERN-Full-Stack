@@ -6,7 +6,7 @@ import { STATUSES } from "../../../globals/status/StatusCode";
 
 const Register = () => {
   const dispatch = useDispatch();
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const { status } = useSelector((state) => state.auth);
   const [userData, setUserData] = useState({
     userName: "",
@@ -22,7 +22,7 @@ const Register = () => {
   const handleChange = (e) => {
     let { name, value } = e.target;
 
-   setUserData({
+    setUserData({
       ...userData,
       [name]: value,
     });
@@ -31,11 +31,11 @@ const Register = () => {
     e.preventDefault();
 
     dispatch(registerPatient(userData));
-    if(status ===STATUSES.SUCCESS){
-      return navigate('/login')
+    if (status === STATUSES.SUCCESS) {
+      return navigate("/login");
     }
-    if(status===STATUSES.ERROR){
-      alert("something went wrong, try agnain")
+    if (status === STATUSES.ERROR) {
+      alert("something went wrong, try agnain");
       return;
     }
   };

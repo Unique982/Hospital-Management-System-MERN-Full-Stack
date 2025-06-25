@@ -146,13 +146,13 @@ const ListPatient = () => {
                         <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                           <div className=" align-items-center flex justify-end space-x-3">
                             <Link
-                              to=""
+                              to={`/admin/patient/view/${patient.id}`}
                               className="inline-flex items-center rounded-md bg-yellow-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-yellow-600 dark:bg-yellow-600 dark:hover:bg-yellow-700"
                             >
                               <MdVisibility className="mr-1 h-6 w-5" />
                             </Link>
                             <Link
-                              to=""
+                              to="{`/admin/patient/view/${patient.id}`}"
                               className="inline-flex items-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-indigo-600 dark:bg-indigo-600 dark:hover:bg-indigo-700"
                             >
                               <MdEditNote className="mr-1 h-6 w-5" />
