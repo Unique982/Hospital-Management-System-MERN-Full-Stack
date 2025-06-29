@@ -29,6 +29,8 @@ const bedAllocatedRouter = require("./routes/bedAllocatedRoutes");
 const bloodDonorRouter = require("./routes/bloodDonorRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
 const reportRoutes = require("./routes/reportRoutes");
+const aboutRoutes = require("./routes/about/aboutRoute");
+const servicesRouter = require("./routes/services/serviceRoute");
 
 app.use("/api", authRoutes);
 app.use("/api", patientRoutes);
@@ -43,6 +45,8 @@ app.use("/api", bedAllocatedRouter);
 app.use("/api", bloodDonorRouter);
 app.use("/api", appointmentRoutes);
 app.use("/api", reportRoutes);
+app.use("/api", aboutRoutes);
+app.use("/api", servicesRouter);
 
 // create server
 app.listen(5000, () => {

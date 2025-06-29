@@ -52,9 +52,13 @@ db.bloodDonrs = require("../models/bloodDonorModel")(sequelize, DataTypes);
 db.appointments = require("../models/appointmentsModel")(sequelize, DataTypes);
 // report table
 db.reports = require("../models/reportModel")(sequelize, DataTypes);
+// about
+db.about = require("../models/aboutModel")(sequelize, DataTypes);
+// service
+db.services = require("../models/services/servicesModel")(sequelize, DataTypes);
 
 // migrate code
-sequelize.sync({ alter: false }).then(() => {
+sequelize.sync({ alter: true }).then(() => {
   console.log("Migrate Successfully");
   const adminSeeder = require("../seeders/admin.seeder");
   adminSeeder(db);
