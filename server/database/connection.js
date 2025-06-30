@@ -56,9 +56,18 @@ db.reports = require("../models/reportModel")(sequelize, DataTypes);
 db.about = require("../models/aboutModel")(sequelize, DataTypes);
 // service
 db.services = require("../models/services/servicesModel")(sequelize, DataTypes);
+// ourteams table import
+db.ourTeams = require("../models/ourTeams/ourTeamsModel")(sequelize, DataTypes);
+// blog table import
+db.blogs = require("../models/blog/blogModel")(sequelize, DataTypes);
+// contact table
+db.contactUs = require("../models/contactUs/contactModel")(
+  sequelize,
+  DataTypes
+);
 
 // migrate code
-sequelize.sync({ alter: true }).then(() => {
+sequelize.sync({ alter: false }).then(() => {
   console.log("Migrate Successfully");
   const adminSeeder = require("../seeders/admin.seeder");
   adminSeeder(db);

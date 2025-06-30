@@ -30,7 +30,10 @@ const bloodDonorRouter = require("./routes/bloodDonorRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
 const reportRoutes = require("./routes/reportRoutes");
 const aboutRoutes = require("./routes/about/aboutRoute");
-const servicesRouter = require("./routes/services/serviceRoute");
+const servicesRoutes = require("./routes/services/serviceRoute");
+const ourTeamsRoutes = require("./routes/ourTeams/ourTeamsRoute");
+const blogRoutes = require("./routes/blog/blogRoute");
+const contactUsRoutes = require("./routes/contactus/contactUsRoute");
 
 app.use("/api", authRoutes);
 app.use("/api", patientRoutes);
@@ -46,7 +49,10 @@ app.use("/api", bloodDonorRouter);
 app.use("/api", appointmentRoutes);
 app.use("/api", reportRoutes);
 app.use("/api", aboutRoutes);
-app.use("/api", servicesRouter);
+app.use("/api", servicesRoutes);
+app.use("/api", ourTeamsRoutes);
+app.use("/api", blogRoutes);
+app.use("/api", contactUsRoutes);
 
 // create server
 app.listen(5000, () => {
